@@ -344,7 +344,7 @@ export default {
             let allTitles = []
             for (let i = 0; i < state.products.length; i++) {
                 if (state.products[i].number > 0) {
-                    allTitles.push({title: state.products[i].title, number: state.products[i].number})
+                    allTitles.push({title: state.products[i].title, number: state.products[i].number, vendor: state.products[i].vendor})
                 }
             }
             return allTitles

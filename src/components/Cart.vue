@@ -165,14 +165,29 @@ export default {
             this.hasItems = false
         },
         postOrder() {
+            const mainContentSection = document.querySelector('.items');
+            const mainSection = document.querySelector('.cart__content');
+            let today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const yyyy = today.getFullYear();
+            today = dd + '.' + mm + '.' + yyyy;
+
             axios.post(
                 `https://shopping-cart-f1829-default-rtdb.europe-west1.firebasedatabase.app/posts.json`,
                 {   order: this.all__names,
                     numberOfItems: this.total__number,
                     totalBill: this.sum__data,
-                    montage: this.montage
+                    montage: this.montage,
+                    vendor: this.products__data.vendor,
+                    date: today
                 }
             )
+            mainContentSection.style.display = 'none';
+            const sent = document.createElement('span');
+            sent.style = 'font-size: 42px; font-weight: 700'
+            sent.textContent = 'Your order is sent.';
+            mainSection.appendChild(sent);
         }
     },
 }

@@ -116,6 +116,7 @@ export default {
 .slider__item {
     max-width: 305px;
     height: 565px;
+    transition: all 1s ease;
 }
 .slider__item img {
     width: 245px;
